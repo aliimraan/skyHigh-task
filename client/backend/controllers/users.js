@@ -4,7 +4,7 @@ const jwt=require('jsonwebtoken')
 
 exports.usersRegister=(req,res)=>{
     console.log(req.body)
-    const {firstName,lastName,mobileNumber,email,pass,dob,state,city,pincode}=req.body
+    const {firstName,lastName,mobileNumber,email,pass,dob,state,city,pincode}=req.body.allInputs
     console.log(pass)
     bcrypt.hash(pass,10).then(hash=>{
         console.log(hash)
@@ -18,7 +18,7 @@ exports.usersRegister=(req,res)=>{
     })   
 }
 exports.usersLogin=(req,res)=>{
-    const {email,pass}=req.body
+    const {email,pass}=req.body.allInputs
     userModel.findOne({email:email}).then(data=>{
         if(!data){
             return res.status(401).json({msg:'not registered user'})
@@ -28,7 +28,7 @@ exports.usersLogin=(req,res)=>{
                 return res.status(400).json({msg:"wrong password"})
             }
             const token=jwt.sign({id:data._id},process.env.JWT_AUTH)
-            return res.status(200).json({token,msg:"you are logged in"})
+            return res.status(200).json({token,data,msg:"you are logged in"})
         })
 
     }).catch(err=>{
