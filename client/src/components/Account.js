@@ -5,7 +5,7 @@ import {useHistory} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Account({heading,button,submit,data,redirect}) {
+function Account({heading,button,submit,data,redirect,src}) {
     const [allInputs,setInputs]=useState('')
     const history=useHistory()
     const showInputs=(data)=>{
@@ -15,7 +15,7 @@ function Account({heading,button,submit,data,redirect}) {
         return data.map((item,index)=>{
             const {name}=item
             return(
-                <Inputs type={item.type} placeholder={item.placeholder} key={index} name={name} onChange={e=>changeHandler(e)}/>
+                <Inputs type={item.type} placeholder={item.placeholder} key={index} name={name}  onChange={e=>changeHandler(e)}/>
             )
         })
     }
@@ -70,7 +70,7 @@ function Account({heading,button,submit,data,redirect}) {
             <div className="account_box">
             <ToastContainer/>
                 <div className="box1">
-                    <img src="/item-1.jpeg" alt="image"/>
+                    <img src={src} alt="image"/>
                     <button onClick={()=>history.push(redirect)}>{button}</button>
                 </div>
                 <div className="box2">

@@ -33,7 +33,7 @@ function ViewUsers() {
             const {firstName,lastName,email,mobileNumber,dob}=item
             index++
             return (
-                <tr>
+                <tr style={{color:'white'}}>
                     <td>{index++}</td>
                     <td>{firstName}</td>
                     <td>{lastName}</td>
@@ -48,8 +48,8 @@ function ViewUsers() {
         <div className="all_users">
             <div className="table_area">
             <h4>list of all users</h4>
-            <Table striped bordered hover >
-            <thead>
+            <Table striped bordered hover responsive>
+            <thead style={{color:'white'}}>
               <tr>
                 <th>s.no</th>
                 <th>First Name</th>

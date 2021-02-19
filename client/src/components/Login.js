@@ -9,7 +9,7 @@ function Login() {
       ]
     return (
         <div>
-            <Account heading="login to get started" button="register" submit="login" data={login} redirect="/register" />
+            <Account heading="login to get started" button="register" submit="login" data={login} redirect="/register" src="/pic2.jpg" />
         </div>
     )
 }

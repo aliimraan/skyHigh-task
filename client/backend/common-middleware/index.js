@@ -8,7 +8,6 @@ exports.authenticate=(req,res,next)=>{
     if (err){
         return res.status(401).json({'msg':'unauthorize'})
     }
-    console.log(decode)
     req.user=decode
     next()
     })

@@ -9,6 +9,7 @@ import {Switch,Route} from 'react-router-dom'
 import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
+import EditPage from './components/EditPage';
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
       <Route path="/allUsers"  component={ViewUsers}/>
       <Route path="/register"  component={Register}/>
       <Route path="/account"  component={ViewAccount}/>
+      <Route path="/edit"  component={EditPage}/>
     </Switch>
     </div>
   );

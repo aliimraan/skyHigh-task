@@ -9,7 +9,7 @@ exports.signUpRequestValidator=[
     .notEmpty()
     .withMessage('lastName is required'),
 
-    check('allInputs.mobileNo')
+    check('allInputs.mobileNumber')
     .notEmpty()
     .withMessage('mobile Number is required')
     .isLength({min:10,max:11})
@@ -25,7 +25,7 @@ exports.signUpRequestValidator=[
     .notEmpty()
     .withMessage('Password is required')
     .isLength({min:4})
-    .withMessage('length mustbe greater than 4 characters'),
+    .withMessage('password length mustbe greater than 4 characters'),
 
     check('allInputs.dob')
     .notEmpty()
@@ -69,6 +69,54 @@ exports.loginRequestValidator=[
 ];
 
 exports.loginRequestValidatorResult=(req,res,next)=>{
+    const error=validationResult(req)
+    console.log(error)
+    if(error.array().length>0){
+        return res.status(400).json({error:error.array()[0].msg})
+    }
+    next()
+}
+
+exports.editRequestValidator=[
+    check('firstName')
+    .notEmpty()
+    .withMessage('First Name is required'),
+
+    check('lastName')
+    .notEmpty()
+    .withMessage('Last Name is required'),
+
+    check('mobileNumber')
+    .notEmpty()
+    .withMessage('mobile Number is required')
+    .isLength({min:10,max:11})
+    .withMessage('Enter valid mobile number'),
+
+    check('email')
+    .notEmpty()
+    .withMessage('Email is required')
+    .isEmail()
+    .withMessage('valid email is required'),
+
+    check('dob')
+    .notEmpty()
+    .withMessage('DOB is required'),
+
+    check('state')
+    .notEmpty()
+    .withMessage('State is required'),
+
+    check('city')
+    .notEmpty()
+    .withMessage('City is required'),
+
+    check('pincode')
+    .notEmpty()
+    .withMessage('Pincode is required'),
+
+];
+
+exports.editRequestValidatorResult=(req,res,next)=>{
     const error=validationResult(req)
     console.log(error)
     if(error.array().length>0){
